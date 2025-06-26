@@ -49,16 +49,25 @@ customTipInput.addEventListener("click", uncheckRadioOptions);
 customTipInput.addEventListener("keyup", assignTip);
 
 function assignBillValue() {
+  if (validateInputs(this.value) == false) {
+    return;
+  }
   totalBill = this.value;
   calculateEverything();
 }
 
 function assignTotalPeople() {
+  if (validateInputs(this.value) == false) {
+    return;
+  }
   totalPeople = this.value;
   calculateEverything();
 }
 
 function assignTip() {
+  if (validateInputs(this.value) == false) {
+    return;
+  }
   tipPercent = this.value;
   calculateEverything();
 }
@@ -69,8 +78,13 @@ function uncheckRadioOptions() {
   });
 }
 
-//to validate
-//bill
-//custom
-//people -- cannot be zero
-//should be postive Number if not error message
+function validateInputs(input) {
+  if (isNaN(input)) {
+    console.log("Please enter a number");
+    return false;
+  }
+  if (input < 0) {
+    console.log("Please enter a number greater than 1");
+    return false;
+  }
+}
