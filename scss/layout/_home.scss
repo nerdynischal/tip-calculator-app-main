@@ -1,1 +1,5 @@
 @use "../utilities" as u;
+
+body {
+  background: var(--grey-200);
+}

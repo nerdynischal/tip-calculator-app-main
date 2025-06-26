@@ -1,0 +1,124 @@
+@use "../utilities" as u;
+
+@mixin flex-column-gap($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: u.rem($gap);
+}
+
+.form {
+  background: var(--white);
+  height: 100vh;
+  border-radius: u.rem(20);
+  padding: u.rem(32);
+
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form,
+#split-form {
+  @include flex-column-gap(32);
+}
+
+input,
+label {
+  cursor: pointer;
+}
+
+input[type="text"] {
+  background: var(--grey-50);
+  border: none;
+  padding: u.rem(8) u.rem(16);
+  width: 100%;
+  text-align: right;
+  border-radius: u.rem(4);
+
+  font-weight: 700;
+  color: var(--green-900);
+  font-size: clamp(u.rem(20), u.rem(16) + 1.5vw, u.rem(42));
+  transition: all 0.16s ease-in;
+  border: 2px solid var(--grey-50);
+
+  &::placeholder {
+    color: var(--grey-500);
+  }
+
+  &:hover {
+    border-color: var(--green-400);
+  }
+}
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+
+  & + label {
+    background: var(--green-900);
+    color: var(--white);
+    padding: u.rem(10);
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(u.rem(20), u.rem(16) + 1.5vw, u.rem(42));
+    border-radius: u.rem(4);
+    transition: all 0.16s ease-in;
+
+    &:hover {
+      background: var(--grey-200);
+      color: var(--green-900);
+    }
+  }
+
+  &:checked + label {
+    background: var(--green-400);
+    color: var(--green-900);
+  }
+}
+
+label,
+legend {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--grey-500);
+  margin-bottom: u.rem(8);
+}
+
+.form__tips-container {
+  display: grid;
+  gap: u.rem(16);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.form__results {
+  background: var(--green-900);
+  color: var(--grey-50);
+  padding: u.rem(36) u.rem(24) u.rem(24) u.rem(24);
+  border-radius: u.rem(12);
+
+  @include flex-column-gap(28);
+}
+
+.form__result {
+  display: flex;
+  justify-content: space-between;
+  .form__result-label {
+    font-size: u.rem(15);
+  }
+  .form__per-person {
+    display: block;
+    font-size: u.rem(14);
+    color: var(--grey-400);
+  }
+
+  .form__tip-value,
+  .form__total-value {
+    color: var(--green-400);
+    font-weight: 700;
+    font-size: clamp(u.rem(30), 1rem + 1.44vw, u.rem(42));
+  }
+}

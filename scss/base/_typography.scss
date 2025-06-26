@@ -1,1 +1,15 @@
 @use "../utilities" as u;
+
+body {
+  font-family: "Space Mono", monospace;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: clamp(u.rem(20), u.rem(16) + 1.5vw, u.rem(42));
+
+  letter-spacing: u.rem(4);
+  text-align: center;
+
+  margin: u.rem(24);
+}

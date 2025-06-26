@@ -1,1 +1,17 @@
 @use "../utilities" as u;
+
+.form__reset-button {
+  background: var(--green-400);
+  text-transform: uppercase;
+  font-size: u.rem(20);
+  font-weight: 700;
+  padding: u.rem(8);
+  border: none;
+  border-radius: u.rem(4);
+  cursor: pointer;
+
+  transition: all 0.16s ease-in;
+  &:hover {
+    background: var(--grey-200);
+  }
+}
