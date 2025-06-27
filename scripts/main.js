@@ -1,8 +1,8 @@
 let totalBill = 0;
 let totalPeople = 1; //minimum of one
 let tipPercent = 5;
-let tipAmountDisplay = document.querySelector(".form__tip-value");
-let totalAmountDisplay = document.querySelector(".form__total-value");
+const tipAmountDisplay = document.querySelector(".form__tip-value");
+const totalAmountDisplay = document.querySelector(".form__total-value");
 
 function calculateTotalTip(totalBill, tipPercent) {
   return totalBill * (tipPercent / 100);
@@ -54,7 +54,7 @@ resetButton.addEventListener("click", () => {
 });
 
 function assignBillValue() {
-  if (validateInputs(this.value) == false) {
+  if (validateInputs(this.value) === false) {
     errorMsgs[0].style.display = "initial";
     billInput.style.borderColor = "var(--red-500)";
     return;
@@ -67,7 +67,7 @@ function assignBillValue() {
 }
 
 function assignTotalPeople() {
-  if (validateInputs(this.value) == false) {
+  if (validateInputs(this.value) === false) {
     errorMsgs[1].style.display = "initial";
     peopleInput.style.borderColor = "var(--red-500)";
     return;
@@ -80,7 +80,7 @@ function assignTotalPeople() {
 }
 
 function assignTip() {
-  if (validateInputs(this.value) == false) {
+  if (validateInputs(this.value) === false) {
     return;
   }
   tipPercent = this.value;
