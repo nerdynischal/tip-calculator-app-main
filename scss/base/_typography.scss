@@ -6,11 +6,15 @@ body {
 
 .title {
   text-transform: uppercase;
-  font-size: clamp(u.rem(20), u.rem(16) + 1.5vw, u.rem(42));
+  font-size: u.rem(28);
 
   letter-spacing: u.rem(4);
   text-align: center;
 
   margin: u.rem(32);
   color: var(--grey-500);
+
+  @include u.breakpoint(medium) {
+    margin: 0 0 u.rem(64) 0;
+  }
 }

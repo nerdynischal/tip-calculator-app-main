@@ -14,11 +14,32 @@
 
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+
+  max-width: u.rem(920);
+
+  @include u.breakpoint(medium) {
+    height: fit-content;
+    border-radius: u.rem(20);
+  }
 }
 
 .form,
-#split-form {
+#split-form,
+.form__inputs-container {
   @include flex-column-gap(32);
+}
+
+#split-form {
+  @include u.breakpoint(medium) {
+    flex-direction: row;
+  }
+}
+
+.form__inputs-container,
+.form__results {
+  @include u.breakpoint(medium) {
+    width: 50%;
+  }
 }
 
 input,
@@ -35,7 +56,7 @@ input[type="text"] {
 
   font-weight: 700;
   color: var(--green-900);
-  font-size: clamp(u.rem(20), u.rem(16) + 1.5vw, u.rem(42));
+  font-size: u.rem(24);
   transition: all 0.16s ease-in;
   border: 2px solid var(--grey-50);
 
@@ -62,7 +83,7 @@ input[type="radio"] {
     margin: 0;
     width: 100%;
     text-align: center;
-    font-size: clamp(u.rem(20), u.rem(16) + 1.5vw, u.rem(42));
+    font-size: u.rem(24);
     border-radius: u.rem(4);
     transition: all 0.16s ease-in;
 
@@ -91,6 +112,10 @@ legend {
   gap: u.rem(16);
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
+
+  @include u.breakpoint(medium) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .form__results {
@@ -100,6 +125,11 @@ legend {
   border-radius: u.rem(12);
 
   @include flex-column-gap(28);
+  justify-content: space-between;
+
+  .form__results-info {
+    @include flex-column-gap(28);
+  }
 }
 
 .form__result {
