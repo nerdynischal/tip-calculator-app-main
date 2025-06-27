@@ -1,6 +1,8 @@
 let totalBill = 0;
 let totalPeople = 1; //minimum of one
-let tipPercent = 5; //get from user, can also be custom amount
+let tipPercent = 5;
+let tipAmountDisplay = document.querySelector(".form__tip-value");
+let totalAmountDisplay = document.querySelector(".form__total-value");
 
 function calculateTotalTip(totalBill, tipPercent) {
   return totalBill * (tipPercent / 100);
@@ -22,10 +24,6 @@ function roundTwoDecimalPlaces(num) {
   return num.toFixed(2);
 }
 
-let tipAmountDisplay = document.querySelector(".form__tip-value");
-let totalAmountDisplay = document.querySelector(".form__total-value");
-
-//calculate the amounts to display
 function calculateEverything() {
   const totalTip = calculateTotalTip(totalBill, tipPercent);
   const tipPerPerson = calculateTipPerPerson(totalTip, totalPeople);
@@ -34,17 +32,14 @@ function calculateEverything() {
 
   tipAmountDisplay.textContent = "$" + roundTwoDecimalPlaces(tipPerPerson);
   totalAmountDisplay.textContent = "$" + roundTwoDecimalPlaces(totalPerPerson);
-
-  console.log("Total tip per person: " + roundTwoDecimalPlaces(tipPerPerson));
-  console.log("Total per person: " + roundTwoDecimalPlaces(totalPerPerson));
-  console.log("Tip percent " + tipPercent);
 }
 
-//get input data from UI
 const billInput = document.getElementById("totalbill");
 const peopleInput = document.getElementById("totalpeople");
 const tipRadioInput = document.getElementsByName("tip");
 const customTipInput = document.getElementById("customtip");
+const errorMsgs = document.querySelectorAll(".form__error-msg");
+const resetButton = document.querySelector(".form__reset-button");
 
 billInput.addEventListener("keyup", assignBillValue);
 peopleInput.addEventListener("keyup", assignTotalPeople);
@@ -53,8 +48,10 @@ tipRadioInput.forEach((option) => {
 });
 customTipInput.addEventListener("click", uncheckRadioOptions);
 customTipInput.addEventListener("keyup", assignTip);
-
-const errorMsgs = document.querySelectorAll(".form__error-msg");
+resetButton.addEventListener("click", () => {
+  tipAmountDisplay.textContent = "$0.00";
+  totalAmountDisplay.textContent = "$0.00";
+});
 
 function assignBillValue() {
   if (validateInputs(this.value) == false) {
@@ -98,17 +95,9 @@ function uncheckRadioOptions() {
 
 function validateInputs(input) {
   if (isNaN(input)) {
-    console.log("Please enter a number");
     return false;
   }
   if (input <= 0) {
-    console.log("Please enter a number greater than 1");
     return false;
   }
 }
-
-const resetButton = document.querySelector(".form__reset-button");
-resetButton.addEventListener("click", () => {
-  tipAmountDisplay.textContent = "$0.00";
-  totalAmountDisplay.textContent = "$0.00";
-});
