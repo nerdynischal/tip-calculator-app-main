@@ -28,7 +28,6 @@ label {
 
 input[type="text"] {
   background: var(--grey-50);
-  border: none;
   padding: u.rem(8) u.rem(16);
   width: 100%;
   text-align: right;
@@ -132,4 +131,16 @@ legend {
   position: relative;
   display: flex;
   align-items: center;
+}
+
+.form__label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .form__error-msg {
+    display: none;
+    color: var(--red-500);
+    margin-bottom: u.rem(8);
+  }
 }

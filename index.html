@@ -33,9 +33,13 @@
       <div class="form">
         <form id="split-form" action="#">
           <div>
-            <label for="totalbill">Bill</label>
+            <div class="form__label-container">
+              <label for="totalbill">Bill</label>
+              <div class="form__error-msg">Can't be zero</div>
+            </div>
+
             <div class="form__text-input-container">
-              <input type="text" id="totalbill" name="totalbill" />
+              <input type="text" id="totalbill" name="totalbill" value="0" />
               <div class="form__input-icon-container">
                 <img src="images/icon-dollar.svg" alt="dolllar icon" />
               </div>
@@ -69,33 +73,40 @@
             </div>
           </div>
           <div>
-            <label for="totalpeople">Number of People</label>
+            <div class="form__label-container">
+              <label for="totalpeople">Number of People</label>
+              <div class="form__error-msg">Can't be zero</div>
+            </div>
             <div class="form__text-input-container">
-              <input type="text" id="totalpeople" name="totalpeople" />
+              <input
+                type="text"
+                id="totalpeople"
+                name="totalpeople"
+                value="1"
+              />
               <div class="form__input-icon-container">
                 <img src="images/icon-person.svg" alt="dolllar icon" />
               </div>
             </div>
           </div>
+
+          <div class="form__results">
+            <div class="form__result">
+              <div class="form__result-label">
+                Tip Amount<span class="form__per-person">/ person</span>
+              </div>
+              <div class="form__tip-value">$0.00</div>
+            </div>
+
+            <div class="form__result">
+              <div class="form__result-label">
+                Total<span class="form__per-person">/ person</span>
+              </div>
+              <div class="form__total-value">$0.00</div>
+            </div>
+            <input class="form__reset-button" type="reset" value="Reset" />
+          </div>
         </form>
-
-        <div class="form__results">
-          <div class="form__result">
-            <div class="form__result-label">
-              Tip Amount<span class="form__per-person">/ person</span>
-            </div>
-            <div class="form__tip-value">$4.27</div>
-          </div>
-
-          <div class="form__result">
-            <div class="form__result-label">
-              Total<span class="form__per-person">/ person</span>
-            </div>
-            <div class="form__total-value">$32.79</div>
-          </div>
-
-          <button class="form__reset-button" type="button">Reset</button>
-        </div>
       </div>
     </main>
 
