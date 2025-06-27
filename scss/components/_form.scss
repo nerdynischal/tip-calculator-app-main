@@ -122,3 +122,14 @@ legend {
     font-size: clamp(u.rem(30), 1rem + 1.44vw, u.rem(42));
   }
 }
+
+.form__input-icon-container {
+  position: absolute;
+  left: u.rem(20);
+}
+
+.form__text-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
